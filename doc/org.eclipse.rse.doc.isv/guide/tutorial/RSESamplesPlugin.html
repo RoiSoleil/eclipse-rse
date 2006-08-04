@@ -9,124 +9,132 @@
 <title>RSESamplesPlugin Class</title>
 </head>
 
-<body bgcolor="#ffffff">
+<body>
 <h1>RSESamplesPlugin Class</h1>
-<p>
 <pre><samp>
-package RSESamples;
+package samples;
 
-import org.eclipse.ui.plugin.*;
-import org.eclipse.core.runtime.*;
-import org.eclipse.core.resources.*;
-import java.util.*;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
-import com.ibm.etools.systems.core.*;
-import com.ibm.etools.systems.core.ui.messages.*;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.preference.*;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.rse.core.SystemBasePlugin;
+import org.eclipse.rse.services.clientserver.messages.SystemMessage;
+import org.eclipse.rse.services.clientserver.messages.SystemMessageFile;
+import org.osgi.framework.BundleContext;
 
 /**
- * The main plugin class to be used in the desktop.
+ * The activator class controls the plug-in life cycle
  */
-public class <b>RSESamplesPlugin</b> extends SystemBasePlugin {
-	<i>//The shared instance.</i>
+public class RSESamplesPlugin extends SystemBasePlugin  {
+
+	//The shared instance.
 	private static RSESamplesPlugin plugin;
-	<i>//Resource bundle.</i>
-	private ResourceBundle resourceBundle;
-	private static SystemMessageFile 	messageFile = null;
+
+	//Resource bundle.
+	private ResourceBundle resourceBundle = null;
+	private static SystemMessageFile messageFile = null;
 	
 	/**
 	 * The constructor.
 	 */
-	public <b>RSESamplesPlugin</b>(IPluginDescriptor descriptor) {
-		super(descriptor, &quot;RSESamples&quot;);
-		plugin = this;
-		<i>//try {</i>
-		<i>//	resourceBundle= ResourceBundle.getBundle(&quot;RSESamples.RSESamplesPluginResources&quot;);</i>
-		<i>//} catch (MissingResourceException x) {</i>
-		<i>//	resourceBundle = null;</i>
-		<i>//}</i>
-		resourceBundle = loadResourceBundle(descriptor,&quot;rseSamplesResources&quot;);
-		messageFile = loadMessageFile(descriptor,&quot;rseSamplesMessages.xml&quot;);
+	public RSESamplesPlugin() {
+		super();
+	}
+
+	/**
+	 * This method is called upon plug-in activation
+	 */
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
+		<strong>plugin = this;
+		messageFile = getMessageFile("rseSamplesMessages.xml");</strong>
+	}
+
+	/**
+	 * This method is called when the plug-in is stopped
+	 */
+	public void stop(BundleContext context) throws Exception {
+		<strong>plugin = null;
+		resourceBundle = null;</strong>
+		super.stop(context);
 	}
 
 	/**
 	 * Returns the shared instance.
 	 */
-	public static RSESamplesPlugin <b>getDefault</b>() {
+	<strong>public static RSESamplesPlugin getDefault() {
 		return plugin;
-	}
+	}</strong>
 
 	/**
 	 * Returns the workspace instance.
 	 */
-	public static IWorkspace <b>getWorkspace</b>() {
+	<strong>public static IWorkspace getWorkspace() {
 		return ResourcesPlugin.getWorkspace();
-	}
+	}</strong>
 
 	/**
 	 * Returns the string from the plugin's resource bundle,
 	 * or 'key' if not found.
 	 */
-	public static String <b>getResourceString</b>(String key) {
+	<strong>public static String getResourceString(String key) {
 		ResourceBundle bundle= RSESamplesPlugin.getDefault().getResourceBundle();
-		return getString(bundle, key); <i>// inherited method.</i>
-		<i>//try {</i>
-		<i>//	return bundle.getString(key);</i>
-		<i>//} catch (MissingResourceException e) {</i>
-		<i>//	return key;</i>
-		<i>//}</i>
-	}
+		try {
+			return (bundle != null) ? bundle.getString(key) : key;
+		} catch (MissingResourceException e) {
+			return key;
+		}
+	}</strong>
 
 	/**
 	 * Returns the plugin's resource bundle,
 	 */
-	public ResourceBundle <b>getResourceBundle</b>() {
+	<strong>public ResourceBundle getResourceBundle() {
+		try {
+			if (resourceBundle == null)
+				resourceBundle = ResourceBundle.getBundle("samples.rseSamplesResources");
+		} catch (MissingResourceException x) {
+			resourceBundle = null;
+		}
 		return resourceBundle;
-	}
+	}</strong>
 
-	/**
-	 * @see AbstractUIPlugin#initializeDefaultPreferences
-	 */
-	protected void <b>initializeDefaultPreferences</b>(IPreferenceStore store) 
-	{
-		super.initializeDefaultPreferences(store);
-		<i>//RSESamplesPreferencePage.initDefaults(store);</i>
-	}    
 	/**
 	 * Initialize the image registry by declaring all of the required graphics.
 	 */
-	protected void <b>initializeImageRegistry</b>()
+	protected void initializeImageRegistry()
 	{
-		String path = getIconPath();
-		<i>//putImageInRegistry(ISamplesConstants.ICON_XXX_ID,</i>
-		<i>//  			       path+ISampleConstants.ICON_XXX);</i>
-		<i>// TO RETRIEVE AN ICON, CALL GETIMAGE OR GETIMAGEDESCRIPTOR WITH ITS XXX_ID ID</i>
 	}
+
 	/**
-	 * Starts up this plug-in and returns whether startup was successful.
+	 * Load a message file for this plugin.
+	 * @param messageFileName - the name of the message xml file. Will look for it in this plugin's install folder.
+	 * @return a message file object containing the parsed contents of the message file, or null if not found.
 	 */
-	public void <b>startup</b>() throws CoreException 
+	<strong>public SystemMessageFile getMessageFile(String messageFileName)
 	{
-		super.startup();
-	}    
+		return loadMessageFile(getBundle(), messageFileName);  	
+	}</strong>	
+
 	/**
 	 * Return our message file
 	 */
-	public static SystemMessageFile <b>getPluginMessageFile</b>()
+	<strong>public static SystemMessageFile getPluginMessageFile()
 	{
 		return messageFile;
-	}  
+	}</strong>  
+
 	/**
 	 * Retrieve a message from this plugin's message file
 	 */
-	public static SystemMessage <b>getPluginMessage</b>(String msgId)
+	<strong>public static SystemMessage getPluginMessage(String msgId)
 	{
 		return getMessage(messageFile, msgId);
-	}
+	}</strong>
 }
-
-
 </samp></pre>
 </p>
 </body>
