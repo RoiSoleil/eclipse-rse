@@ -15,12 +15,12 @@
  ********************************************************************************/
 package org.eclipse.rse.internal.references;
 
-import org.eclipse.rse.references.ISystemPersistableReferencedObject;
+import org.eclipse.rse.core.references.IRSEPersistableReferencedObject;
 
 /**
- * @see org.eclipse.rse.references.ISystemBasePersistableReferenceManager
+ * @see org.eclipse.rse.core.references.IRSEBasePersistableReferenceManager
  */
-public abstract class SystemPersistableReferencedObject extends SystemReferencedObject implements ISystemPersistableReferencedObject {
+public abstract class SystemPersistableReferencedObject extends SystemReferencedObject implements IRSEPersistableReferencedObject {
 	/**
 	 * Constructor.
 	 */
@@ -31,7 +31,7 @@ public abstract class SystemPersistableReferencedObject extends SystemReferenced
 	/**
 	 * Return the unique reference name of this object.
 	 * <p>
-	 * As required by the {@link org.eclipse.rse.references.ISystemPersistableReferencedObject} 
+	 * As required by the {@link org.eclipse.rse.core.references.IRSEPersistableReferencedObject} 
 	 * interface.
 	 * <p>
 	 * YOUR SUBCLASS MUST OVERRIDE THIS!
