@@ -17,6 +17,7 @@
 package org.eclipse.rse.core;
 /**
  * Constants for user Id management
+ * @deprecated use {@link IRSEUserIdConstants} instead.
  */
 public interface ISystemUserIdConstants
 {
