@@ -17,6 +17,7 @@ import org.eclipse.rse.tests.core.connection.RSEConnectionTestSuite;
 import org.eclipse.rse.tests.framework.DelegatingTestSuiteHolder;
 import org.eclipse.rse.tests.internal.RSEInternalFrameworkTestSuite;
 import org.eclipse.rse.tests.subsystems.files.RSEFileSubsystemTestSuite;
+import org.eclipse.rse.tests.subsystems.testsubsystem.RSETestSubsystemTestSuite;
 
 /**
  * Main class bundling all single specialized test suites into a
@@ -52,6 +53,7 @@ public class RSECombinedTestSuite extends DelegatingTestSuiteHolder {
 		suite.addTest(RSEInternalFrameworkTestSuite.suite());
 		suite.addTest(RSEConnectionTestSuite.suite());
 		suite.addTest(RSEFileSubsystemTestSuite.suite());
+		suite.addTest(RSETestSubsystemTestSuite.suite());
 		
 		return suite;
 	}
