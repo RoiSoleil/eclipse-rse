@@ -16,7 +16,7 @@
 
 package org.eclipse.rse.internal.ui.propertypages;
 
-import org.eclipse.rse.internal.logging.ui.LoggingPreferencePage;
+import org.eclipse.rse.internal.ui.logging.LoggingPreferencePage;
 import org.eclipse.rse.ui.RSEUIPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
