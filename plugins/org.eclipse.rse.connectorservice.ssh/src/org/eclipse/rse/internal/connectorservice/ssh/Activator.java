@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2007 Wind River Systems, Inc.
+ * Copyright (c) 2006, 2007 Wind River Systems, Inc. and others.
  * All rights reserved. This program and the accompanying materials 
  * are made available under the terms of the Eclipse Public License v1.0 
  * which accompanies this distribution, and is available at 
@@ -7,6 +7,8 @@
  * 
  * Contributors: 
  * Martin Oberhuber (Wind River) - initial API and implementation 
+ * Martin Oberhuber (Wind River) - [175686] Adapted to new IJSchService API 
+ *    - copied code from org.eclipse.team.cvs.ssh2/CVSSSH2Plugin (Copyright IBM)
  *******************************************************************************/
 package org.eclipse.rse.internal.connectorservice.ssh;
 
@@ -16,44 +18,63 @@ import java.util.Date;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jsch.core.IJSchService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.rse.connectorservice.ssh"; //$NON-NLS-1$
-
-	// The shared instance
 	private static Activator plugin;
+
+	// ServiceTracker for IJschService
+	private ServiceTracker tracker;
 
 	/**
 	 * The constructor
 	 */
 	public Activator() {
+		super();
 		plugin = this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-	 */
+    //---------------------------------------------------------------------------
+	//<copied code from org.eclipse.team.cvs.ssh2/CVSSSH2Plugin (Copyright IBM)>
+    //---------------------------------------------------------------------------
+
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+	    tracker = new ServiceTracker(getBundle().getBundleContext(), IJSchService.class.getName(), null);
+	    tracker.open();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-	 */
 	public void stop(BundleContext context) throws Exception {
-		plugin = null;
-		super.stop(context);
+		try {
+			SshConnectorService.shutdown();
+			tracker.close();
+		} finally {
+			plugin = null;
+			super.stop(context);
+		}
 	}
 
+	/**
+	 * Returns an instance of IJSchService from the OSGi Registry.
+	 * @return An instance of IJSchService, or <code>null</code> if no 
+	 * 		IJschService service is available.
+	 */
+    public IJSchService getJSchService() {
+        return (IJSchService)tracker.getService();
+    }
+
+    //---------------------------------------------------------------------------
+	//</copied code from org.eclipse.team.cvs.ssh2/CVSSSH2Plugin (Copyright IBM)>
+    //---------------------------------------------------------------------------
+    
 	/**
 	 * Returns the shared instance
 	 *
