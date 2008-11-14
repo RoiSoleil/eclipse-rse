@@ -7,13 +7,13 @@
  * Contributors:
  * Xuan Chen (IBM) - [222470] initial contribution.
  * Kevin Doyle (IBM) - [239805] User Action/Compile menu's shouldn't be tied to IRemoteFile
+ * Kevin Doyle (IBM) - [239700] Compile Commands are available on items it shouldn't
  *********************************************************************************/
 package org.eclipse.rse.internal.useractions.api.ui.compile;
 
 import java.util.ArrayList;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.Separator;
@@ -48,22 +48,6 @@ import org.eclipse.ui.actions.CompoundContributionItem;
  */
 public class SystemDynamicCompileMenu extends CompoundContributionItem
 {
-	private class TestContribution extends ActionContributionItem {
-
-		public TestContribution(Action action)
-		{
-			super(action);
-		}
-
-		/*
-		public void fill(Menu menu, int index)
-		{
-
-			MenuItem menuItem = new MenuItem(menu, SWT.RADIO);
-			menuItem.setText("My First Contribution");
-		}
-		*/
-	}
 
 	protected IContributionItem[] getContributionItems() {
 
@@ -122,9 +106,9 @@ public class SystemDynamicCompileMenu extends CompoundContributionItem
 					 SystemCompileCommand[] cmds = compileType.getCompileCommandsArray();
 					 for (int idx2=0; idx2<cmds.length; idx2++)
 					 {
-						 SystemCompileAction action = new SystemCompileAction(shell, cmds[idx2], true);
+						 SystemCompileAction action = new SystemCompileAction(shell, cmds[idx2], false);
 						 action.setSelection(selection);
-						 TestContribution testContribution = new TestContribution(action);
+						 ActionContributionItem testContribution = new ActionContributionItem(action);
 						 returnedItemList.add(testContribution);
 						 //ourSubMenu.add(action);
 					 }
@@ -142,7 +126,7 @@ public class SystemDynamicCompileMenu extends CompoundContributionItem
 		   // Here's where you would dynamically generate your list
 		SystemWorkWithCompileCommandsAction workWithCompileCommandAction = new SystemWorkWithCompileCommandsAction(shell, true, subsystem, compileManager);
 		workWithCompileCommandAction.setSelection(selection);
-		TestContribution testContribution = new TestContribution(workWithCompileCommandAction);
+		ActionContributionItem testContribution = new ActionContributionItem(workWithCompileCommandAction);
 		returnedItemList.add(testContribution);
         IContributionItem[] list = (IContributionItem[])returnedItemList.toArray(new IContributionItem[]{});
 		//String[] array = (String[])arrayList.toArray(new String[]{});
