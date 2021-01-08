@@ -177,7 +177,7 @@ public class SerializingProvider implements IRSEPersistenceProvider {
 			try {
 				profileFile.delete(IResource.FORCE | IResource.KEEP_HISTORY, monitor);
 			} catch (CoreException e) {
-				result = new Status(IStatus.ERROR, null, IRSECoreStatusCodes.EXCEPTION_OCCURRED, RSECoreMessages.SerializingProvider_UnexpectedException, e);
+				result = new Status(IStatus.ERROR, RSECorePlugin.PLUGIN_ID, IRSECoreStatusCodes.EXCEPTION_OCCURRED, RSECoreMessages.SerializingProvider_UnexpectedException, e);
 			}
 		}
 		return result;
