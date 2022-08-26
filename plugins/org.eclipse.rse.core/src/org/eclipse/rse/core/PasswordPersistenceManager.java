@@ -37,6 +37,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.internal.runtime.AuthorizationHandler;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -350,13 +351,13 @@ public class PasswordPersistenceManager {
 		if (mapLocation != null) {
 			try {
 				URL serverURL = new URL(mapLocation);
-				passwordMap = Platform.getAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
+				passwordMap = AuthorizationHandler.getAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
 				if (passwordMap == null) {
 					URL oldServerURL1 = new URL(SERVER_URL + ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
-					passwordMap = Platform.getAuthorizationInfo(oldServerURL1, systemTypeId, AUTH_SCHEME);
+					passwordMap = AuthorizationHandler.getAuthorizationInfo(oldServerURL1, systemTypeId, AUTH_SCHEME);
 					if (passwordMap == null) {
 						URL oldServerURL2 = new URL(SERVER_URL);
-						passwordMap = Platform.getAuthorizationInfo(oldServerURL2, systemTypeId, AUTH_SCHEME);
+						passwordMap = AuthorizationHandler.getAuthorizationInfo(oldServerURL2, systemTypeId, AUTH_SCHEME);
 					}
 				}
 			} catch (MalformedURLException e) {

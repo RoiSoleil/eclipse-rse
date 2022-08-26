@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.internal.runtime.AuthorizationHandler;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -365,13 +366,13 @@ public class OriginalPasswordPersistenceManager {
 		try
 		{
 			URL serverURL = new URL(newURL);
-			passwords = Platform.getAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
+			passwords = AuthorizationHandler.getAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
 
 			// if no passwords found with new URL, check old URL
 			if (passwords == null) {
 
 				URL oldServerURL1 = new URL(SERVER_URL + ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
-				passwords = Platform.getAuthorizationInfo(oldServerURL1, systemTypeId, AUTH_SCHEME);
+				passwords = AuthorizationHandler.getAuthorizationInfo(oldServerURL1, systemTypeId, AUTH_SCHEME);
 
 				// passwords found, so migrate to using new URL
 				if (passwords != null) {
@@ -380,7 +381,7 @@ public class OriginalPasswordPersistenceManager {
 				// if still no passwords found, check with even older URL
 				else {
 					URL oldServerURL2 = new URL(SERVER_URL);
-					passwords = Platform.getAuthorizationInfo(oldServerURL2, systemTypeId, AUTH_SCHEME);
+					passwords = AuthorizationHandler.getAuthorizationInfo(oldServerURL2, systemTypeId, AUTH_SCHEME);
 
 					// passwords found, so migrate to using new URL
 					if (passwords != null) {
@@ -404,8 +405,8 @@ public class OriginalPasswordPersistenceManager {
 		try
 		{
 			URL serverURL = new URL(newURL);
-			Platform.flushAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
-			Platform.addAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME, passwords);
+			AuthorizationHandler.flushAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME);
+			AuthorizationHandler.addAuthorizationInfo(serverURL, systemTypeId, AUTH_SCHEME, passwords);
 		}
 		catch (MalformedURLException e) {
 			RSECorePlugin.getDefault().getLogger().logError("PasswordPersistenceManager.savePasswordMap", e); //$NON-NLS-1$

@@ -14,11 +14,11 @@
 <feature
       id="org.eclipse.rse.ssh"
       label="%featureName"
-      version="4.5.300.qualifier"
+      version="4.5.400"
       provider-name="%providerName"
       plugin="org.eclipse.rse.services.ssh"
       license-feature="org.eclipse.license"
-      license-feature-version="1.0.1.qualifier">
+      license-feature-version="2.0.2.v20181016-2210">
 
    <description>
       %description

@@ -1,9 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.rse.doc.isv; singleton:=true
-Bundle-Version: 4.5.300.qualifier
-Bundle-Localization: plugin
-Eclipse-LazyStart: false
+Bundle-SymbolicName: org.eclipse.rse.doc.isv;singleton:=true
+Bundle-Version: 4.5.400
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.eclipse.rse.doc.isv.singleton.true
+Eclipse-LazyStart: false
