@@ -17,6 +17,7 @@
   <parent>
     <groupId>org.eclipse.tm.rse</groupId>
     <artifactId>org.eclipse.tm.rse</artifactId>
+    <version>4.5.400-SNAPSHOT</version>
     </parent>
 
   <groupId>org.eclipse.tm.rse</groupId>

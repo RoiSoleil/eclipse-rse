@@ -21,8 +21,8 @@
 
   <groupId>org.eclipse.tm.rse</groupId>
   <artifactId>org.eclipse.tm.rse</artifactId>
+  <version>4.5.400-SNAPSHOT</version>
   <packaging>pom</packaging>
-
    <modules>
      <module>doc</module>
      <module>examples</module>
