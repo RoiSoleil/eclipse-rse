@@ -911,7 +911,7 @@ public class LocalFileService extends AbstractFileService implements ILocalServi
 			return false;
 		}
 		else {
-			return LocalFileNativesManager.isUsingNatives();
+			return Boolean.parseBoolean(System.getProperty(LocalFileNativesManager.PROPERTY_USE_NATIVES, String.valueOf(LocalFileNativesManager.PROPERTY_USE_NATIVE_DEFAULT)));
 		}
 	}
 

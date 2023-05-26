@@ -16,12 +16,12 @@
   <parent>
     <groupId>org.eclipse.tm</groupId>
     <artifactId>tm-parent</artifactId>
-    <version>4.5.400</version>
+    <version>4.5.500</version>
   </parent>
 
   <groupId>org.eclipse.tm.rse</groupId>
   <artifactId>org.eclipse.tm.rse</artifactId>
-  <version>4.5.400-SNAPSHOT</version>
+  <version>4.5.500-SNAPSHOT</version>
   <packaging>pom</packaging>
    <modules>
      <module>doc</module>

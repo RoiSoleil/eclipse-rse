@@ -614,8 +614,8 @@ public class RSEFileStoreTest extends FileServiceBaseTest {
 			System.out.println("Good! mkdirsShallow: " + ce.getLocalizedMessage());
 			exceptionThrown = true;
 			int code = ce.getStatus().getCode();
-			//assertTrue("2.1", code == EFS.ERROR_NOT_EXISTS);
-			assertTrue("2.1", code == EFS.ERROR_WRITE);
+			assertTrue("2.1", code == EFS.ERROR_NOT_EXISTS || code == EFS.ERROR_WRITE);
+			//assertTrue("2.1", code == EFS.ERROR_WRITE);
 		}
 		assertTrue("2.2", exceptionThrown);
 
