@@ -39,6 +39,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HandshakeCompletedEvent;
 import javax.net.ssl.HandshakeCompletedListener;
@@ -227,9 +228,15 @@ public class ServerLauncher extends Thread {
 			boolean problemReadingSocket = false;
 			try
 			{
-				user = _reader.readLine();
+				String userTmp = _reader.readLine();
+				if (Pattern.matches("\\w+", userTmp)) {
+					user = userTmp;
+				}
 				password = _reader.readLine();
-				_port = _reader.readLine();
+				String portTmp = _reader.readLine();
+				if (Pattern.matches("\\d{5}", portTmp)) {
+					_port = portTmp;
+				}
 			}
 			catch (IOException e)
 			{
@@ -291,7 +298,7 @@ public class ServerLauncher extends Thread {
 							{
 								authPath = "perl " + _path + File.separator + "auth.pl"; //$NON-NLS-1$ //$NON-NLS-2$							
 							}
-	
+
 							String authString =
 									authPath
 									+ " " //$NON-NLS-1$
