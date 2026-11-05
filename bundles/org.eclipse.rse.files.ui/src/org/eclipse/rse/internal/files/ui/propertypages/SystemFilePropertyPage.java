@@ -83,8 +83,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.ide.IDEEncoding;
 
-import com.ibm.icu.text.DateFormat;
-import com.ibm.icu.text.NumberFormat;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 
 
 /**

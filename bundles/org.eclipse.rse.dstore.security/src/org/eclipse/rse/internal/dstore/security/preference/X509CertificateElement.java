@@ -23,7 +23,7 @@ package org.eclipse.rse.internal.dstore.security.preference;
 import java.security.cert.X509Certificate;
 import java.util.Date;
 
-import com.ibm.icu.text.DateFormat;
+import java.text.DateFormat;
 
 
 public class X509CertificateElement extends Element

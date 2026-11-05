@@ -12,20 +12,20 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>org.eclipse.tm.rse.doc</artifactId>
-		<groupId>org.eclipse.tm.rse</groupId>
-		<version>4.5.700-SNAPSHOT</version>
+		<groupId>org.eclipse.rse</groupId>
+		<artifactId>org.eclipse.rse.bundles</artifactId>
+		<version>4.6.0-SNAPSHOT</version>
 	</parent>
-	<groupId>org.eclipse.tm</groupId>
+	<groupId>org.eclipse.rse</groupId>
 	<artifactId>org.eclipse.dstore.doc.isv</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-eclipserun-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-eclipse-plugin</artifactId>
+				<version>${tycho.version}</version>
 				<configuration>
 					<appArgLine>-application org.eclipse.ant.core.antRunner -buildfile buildDoc.xml</appArgLine>
 					<dependencies>
@@ -44,9 +44,9 @@
 					</dependencies>
 					<repositories>
 						<repository>
-							<id>2022-09</id>
+							<id>eclipse-release</id>
 							<layout>p2</layout>
-							<url>https://download.eclipse.org/releases/2022-09</url>
+							<url>https://download.eclipse.org/releases/latest</url>
 						</repository>
 					</repositories>
 				</configuration>

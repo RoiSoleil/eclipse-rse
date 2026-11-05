@@ -25,9 +25,9 @@ import org.eclipse.rse.services.terminals.ITerminalService;
 import org.eclipse.rse.services.terminals.ITerminalShell;
 import org.eclipse.rse.subsystems.terminals.core.ITerminalServiceSubSystem;
 import org.eclipse.rse.subsystems.terminals.core.TerminalServiceSubSystem;
-import org.eclipse.tm.internal.terminal.provisional.api.ITerminalControl;
-import org.eclipse.tm.internal.terminal.provisional.api.Logger;
-import org.eclipse.tm.internal.terminal.provisional.api.TerminalState;
+import org.eclipse.terminal.connector.ITerminalControl;
+import org.eclipse.terminal.connector.Logger;
+import org.eclipse.terminal.connector.TerminalState;
 
 public class RSETerminalConnectionThread extends Thread {
     private final ITerminalControl fControl;

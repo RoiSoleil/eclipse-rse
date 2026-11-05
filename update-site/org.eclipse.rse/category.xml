@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.rse">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.core">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.ssh">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.local">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.ftp">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.telnet">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.dstore">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.scp">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.terminals">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.useractions">
+      <category name="org.eclipse.rse"/>
+   </feature>
+   <feature id="org.eclipse.rse.sdk">
+      <category name="org.eclipse.rse.sdk"/>
+   </feature>
+   <feature id="org.eclipse.rse.useractions.sdk">
+      <category name="org.eclipse.rse.sdk"/>
+   </feature>
+   <category-def name="org.eclipse.rse" label="Remote System Explorer"/>
+   <category-def name="org.eclipse.rse.sdk" label="Remote System Explorer SDK"/>
+</site>

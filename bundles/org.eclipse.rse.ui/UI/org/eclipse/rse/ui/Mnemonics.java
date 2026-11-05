@@ -49,9 +49,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.lang.UCharacter.UnicodeBlock;
-import com.ibm.icu.util.ULocale;
+import java.lang.Character.UnicodeBlock;
+import java.util.Locale;
 
 /**
  * Instances of this class may be used to supply mnemonics to the
@@ -297,7 +296,7 @@ public class Mnemonics {
 			}
 		}
 		if (mn == ' ' && ((flags & APPEND_MNEMONICS) > 0)) { // no mnemonic exists, try appending a mnemonic
-			String localeName = ULocale.getDefault().getName();
+			String localeName = Locale.getDefault().toString();
 			if (localeName.matches(localePattern)) {
 				String candidates = getCandidates();
 				int p = findUniqueMnemonic(candidates);
@@ -351,7 +350,7 @@ public class Mnemonics {
 		 * This is a coarse-grained approach and uses the 2-letter language codes from ISO 639-1.
 		 * This should be quite sufficient for mnemonic generation.
 		 */
-		String language = ULocale.getDefault().getLanguage();
+		String language = Locale.getDefault().getLanguage();
 		if (language.equals(LC_GREEK)) return GREEK_MNEMONICS;
 		if (language.equals(LC_RUSSIAN)) return RUSSIAN_MNEMONICS;
 		return LATIN_MNEMONICS;
@@ -379,7 +378,7 @@ public class Mnemonics {
 
 	private boolean isAcceptable(char ch) {
 		UnicodeBlock block = UnicodeBlock.of(ch);
-		boolean result = (isAcceptable(block) && UCharacter.isLetter(ch)); // the character is a letter
+		boolean result = (isAcceptable(block) && Character.isLetter(ch)); // the character is a letter
 		return result;
 	}
 

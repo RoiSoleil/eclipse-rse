@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.ibm.icu.text.DateFormat;
+import java.text.DateFormat;
 
 public class CertificatePropertiesForm extends SystemBaseForm
 {

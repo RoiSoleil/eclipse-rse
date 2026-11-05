@@ -38,7 +38,7 @@ import org.eclipse.rse.ui.actions.SystemBaseAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 
-import com.ibm.icu.text.MessageFormat;
+import java.text.MessageFormat;
 
 /**
  * This is the action for exporting a connection to a file.

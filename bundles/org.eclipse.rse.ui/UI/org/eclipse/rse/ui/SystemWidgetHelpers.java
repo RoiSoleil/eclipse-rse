@@ -58,7 +58,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.ibm.icu.text.Collator;
+import java.text.Collator;
 
 /**
  * Static methods that can be used when writing SWT GUI code.

@@ -19,10 +19,10 @@ import java.io.OutputStream;
 import org.eclipse.rse.core.RSECorePlugin;
 import org.eclipse.rse.core.model.IHost;
 import org.eclipse.rse.services.terminals.ITerminalShell;
-import org.eclipse.tm.internal.terminal.provisional.api.ITerminalControl;
-import org.eclipse.tm.internal.terminal.provisional.api.provider.TerminalConnectorImpl;
+import org.eclipse.terminal.connector.ITerminalControl;
+import org.eclipse.terminal.connector.provider.AbstractTerminalConnector;
 
-public class RSETerminalConnectorImpl extends TerminalConnectorImpl {
+public class RSETerminalConnectorImpl extends AbstractTerminalConnector {
     private OutputStream fOutputStream;
     private InputStream fInputStream;
     IHost host;

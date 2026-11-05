@@ -14,7 +14,7 @@ package org.eclipse.rse.internal.terminals.ui.views;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.rse.core.model.IHost;
-import org.eclipse.tm.internal.terminal.provisional.api.ITerminalConnector;
+import org.eclipse.terminal.connector.ITerminalConnector;
 
 public class RSETerminalConnector extends RSETerminalConnectorImpl implements ITerminalConnector {
 

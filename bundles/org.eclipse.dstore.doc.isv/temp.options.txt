@@ -2,8 +2,8 @@
 -source 1.4
 -sourcepath "../org.eclipse.dstore.core/src:../org.eclipse.dstore.extra/src"
 -d reference/api
--bootclasspath /usr/lib/jvm/java-11-openjdk-11.0.21.0.9-1.fc39.x86_64/lib/jrt-fs.jar
--classpath /home/sbouchet/git/org.eclipse.tm/rse/doc/org.eclipse.dstore.doc.isv/target/eclipserun-work/configuration/org.eclipse.osgi/20/0/.cp/ant_tasks/helpbase-ant.jar:/home/sbouchet/git/org.eclipse.tm/rse/doc/org.eclipse.dstore.doc.isv/target/eclipserun-work/configuration/org.eclipse.osgi/5/0/.cp/lib/antsupportlib.jar
+-bootclasspath /usr/lib/jvm/java-21-openjdk-amd64/lib/jrt-fs.jar
+-classpath /home/gilles/git/eclipse-rse/bundles/org.eclipse.dstore.doc.isv/target/eclipserun-work/configuration/org.eclipse.osgi/21/0/.cp/ant_tasks/helpbase-ant.jar:/home/gilles/git/eclipse-rse/bundles/org.eclipse.dstore.doc.isv/target/eclipserun-work/configuration/org.eclipse.osgi/38/0/.cp/lib/antsupportlib.jar
 -breakiterator
 -use
 -splitIndex
@@ -12,7 +12,7 @@
 -header "<b>Remote System Explorer DataStore</b><br>Release 3.4"
 -bottom "Copyright (c) IBM Corporation and others 2000, 2012. All Rights Reserved."
 -link http://docs.oracle.com/javase/1.5.0/docs/api
--linkoffline ./../../../org.eclipse.platform.doc.isv/reference/api /home/sbouchet/git/org.eclipse.tm/rse/doc/org.eclipse.dstore.doc.isv/javadoc.link.location/platform/reference/api/
+-linkoffline ./../../../org.eclipse.platform.doc.isv/reference/api /home/gilles/git/eclipse-rse/bundles/org.eclipse.dstore.doc.isv/javadoc.link.location/platform/reference/api/
 -link http://bundles.osgi.org/javadoc/r4
 
 org.eclipse.dstore.core

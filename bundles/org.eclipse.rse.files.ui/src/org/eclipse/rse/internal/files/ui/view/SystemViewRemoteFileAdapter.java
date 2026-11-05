@@ -233,9 +233,9 @@ import org.eclipse.ui.progress.IElementCollector;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 
-import com.ibm.icu.text.DateFormat;
-import com.ibm.icu.text.NumberFormat;
-import com.ibm.icu.util.ULocale;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 
 /**
@@ -1458,7 +1458,7 @@ public class SystemViewRemoteFileAdapter
 						return ""; //$NON-NLS-1$
 					}
 					else {
-						ULocale locale = ULocale.getDefault();					
+						Locale locale = Locale.getDefault();					
 						DateFormat  icufmt = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM, locale);
 						String formattedDate = icufmt.format(date);
 						return formattedDate;

@@ -29,7 +29,7 @@
  ********************************************************************************/
 package org.eclipse.rse.internal.terminals.ui.views;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.action.IMenuListener;
@@ -60,16 +60,16 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.tm.internal.terminal.control.ITerminalListener;
-import org.eclipse.tm.internal.terminal.control.ITerminalViewControl;
-import org.eclipse.tm.internal.terminal.control.TerminalViewControlFactory;
-import org.eclipse.tm.internal.terminal.control.actions.TerminalActionClearAll;
-import org.eclipse.tm.internal.terminal.control.actions.TerminalActionCopy;
-import org.eclipse.tm.internal.terminal.control.actions.TerminalActionCut;
-import org.eclipse.tm.internal.terminal.control.actions.TerminalActionPaste;
-import org.eclipse.tm.internal.terminal.control.actions.TerminalActionSelectAll;
-import org.eclipse.tm.internal.terminal.provisional.api.ITerminalConnector;
-import org.eclipse.tm.internal.terminal.provisional.api.TerminalState;
+import org.eclipse.terminal.control.ITerminalListener;
+import org.eclipse.terminal.control.ITerminalViewControl;
+import org.eclipse.terminal.control.TerminalTitleRequestor;
+import org.eclipse.terminal.control.TerminalViewControlFactory;
+import org.eclipse.terminal.view.ui.internal.actions.TerminalActionClearAll;
+import org.eclipse.terminal.view.ui.internal.actions.TerminalActionCopy;
+import org.eclipse.terminal.view.ui.internal.actions.TerminalActionPaste;
+import org.eclipse.terminal.view.ui.internal.actions.TerminalActionSelectAll;
+import org.eclipse.terminal.connector.ITerminalConnector;
+import org.eclipse.terminal.connector.TerminalState;
   
 /**
  * This is the desktop view wrapper of the System View viewer.
@@ -85,8 +85,6 @@ public class TerminalViewTab extends Composite {
 	private boolean fMenuAboutToShow;
 
 	private TerminalActionCopy fActionEditCopy;
-
-	private TerminalActionCut fActionEditCut;
 
 	private TerminalActionPaste fActionEditPaste;
 
@@ -108,7 +106,6 @@ public class TerminalViewTab extends Composite {
 		public void menuAboutToShow(IMenuManager menuMgr) {
 			fMenuAboutToShow = true;
 			fActionEditCopy.updateAction(fMenuAboutToShow);
-			fActionEditCut.updateAction(fMenuAboutToShow);
 			fActionEditSelectAll.updateAction(fMenuAboutToShow);
 			fActionEditPaste.updateAction(fMenuAboutToShow);
 			fActionEditClearAll.updateAction(fMenuAboutToShow);
@@ -267,14 +264,18 @@ public class TerminalViewTab extends Composite {
 
 						}
 
-						public void setTerminalTitle(String title) {
+						public void setTerminalTitle(String title, TerminalTitleRequestor requestor) {
+
+						}
+
+						public void setTerminalSelectionChanged() {
 
 						}
 					}, c, new ITerminalConnector[] { connector }, true);
 			// Specify Encoding for Terminal
 			try {
-				terminalControl.setEncoding(host.getDefaultEncoding(true));
-			} catch (UnsupportedEncodingException e) {
+				terminalControl.setCharset(Charset.forName(host.getDefaultEncoding(true)));
+			} catch (IllegalArgumentException e) {
 				/* ignore and allow fallback to default encoding */
 			}
 			terminalControl.setConnector(connector);
@@ -312,11 +313,6 @@ public class TerminalViewTab extends Composite {
 
 	protected void setupActions() {
 		fActionEditCopy = new TerminalActionCopy() {
-			protected ITerminalViewControl getTarget() {
-				return getCurrentTerminalViewControl();
-			}
-		};
-		fActionEditCut = new TerminalActionCut() {
 			protected ITerminalViewControl getTarget() {
 				return getCurrentTerminalViewControl();
 			}

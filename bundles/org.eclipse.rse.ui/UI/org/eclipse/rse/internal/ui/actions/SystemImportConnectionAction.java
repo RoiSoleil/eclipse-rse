@@ -40,7 +40,7 @@ import org.eclipse.rse.ui.actions.SystemBaseAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 
-import com.ibm.icu.text.MessageFormat;
+import java.text.MessageFormat;
 
 /**
  * This action is used to import a connection from a file into the selected profile.

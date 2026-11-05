@@ -28,8 +28,8 @@ import org.eclipse.rse.services.terminals.ITerminalShell;
 import org.eclipse.rse.subsystems.terminals.core.ITerminalServiceSubSystem;
 import org.eclipse.rse.subsystems.terminals.core.elements.TerminalElement;
 import org.eclipse.swt.custom.CTabItem;
-import org.eclipse.tm.internal.terminal.control.ITerminalViewControl;
-import org.eclipse.tm.internal.terminal.provisional.api.ITerminalConnector;
+import org.eclipse.terminal.control.ITerminalViewControl;
+import org.eclipse.terminal.connector.ITerminalConnector;
 
 public class TerminalServiceHelper {
 

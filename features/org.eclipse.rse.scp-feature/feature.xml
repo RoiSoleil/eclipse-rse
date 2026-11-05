@@ -15,7 +15,7 @@
 <feature
       id="org.eclipse.rse.scp"
       label="%featureName"
-      version="4.5.700.qualifier"
+      version="4.6.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.rse.subsystems.files.scp"
       image="eclipse_update_120.jpg"
@@ -43,7 +43,7 @@
       <import plugin="org.eclipse.rse.core"/>
       <import plugin="org.eclipse.rse.ui"/>
       <import plugin="org.eclipse.rse.subsystems.files.core"/>
-      <import plugin="com.jcraft.jsch" version="0.1.31" match="compatible"/>
+      <import plugin="com.github.mwiede.jsch" version="2.0.0" match="compatible"/>
    </requires>
 
    <plugin
